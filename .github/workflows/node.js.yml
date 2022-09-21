@@ -11,7 +11,7 @@ env:
 
 jobs:
   init:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         node-version: [16.x]
@@ -24,12 +24,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-    - run: npm run test
+    - run: npm test
 
 #DockerHub Build/Push Using Docker Action: "https://github.com/marketplace/actions/build-and-push-docker-images"
   docker:
     runs-on: ubuntu-18.04
+    needs: init
     steps:
+      - uses: actions/checkout@v3
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
