@@ -49,3 +49,15 @@ jobs:
         with:
           push: true
           tags: ${{ env.REGISTRY }}/${{ ENV.IMAGE_NAME }}:latest
+  
+  heroku:
+    runs-on: ubuntu-18.04
+    needs: docker
+    steps:
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{ ENV.IMAGE_NAME }} #Must be unique in Heroku
+          heroku_email: "tinchogaramo@gmail.com"
+          usedocker: true
