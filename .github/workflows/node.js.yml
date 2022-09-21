@@ -24,8 +24,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
-    - run: npm test
-    
+    - run: npm run test
+
 #DockerHub Build/Push Using Docker Action: "https://github.com/marketplace/actions/build-and-push-docker-images"
   docker:
     runs-on: ubuntu-18.04
