@@ -25,7 +25,7 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm test
-
+'''
 #DockerHub Build/Push Using Docker Action: "https://github.com/marketplace/actions/build-and-push-docker-images"
   docker:
     runs-on: ubuntu-18.04
@@ -50,3 +50,4 @@ jobs:
         with:
           push: true
           tags: ${{ env.REGISTRY }}/${{ ENV.IMAGE_NAME }}:latest
+          '''
