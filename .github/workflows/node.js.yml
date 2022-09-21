@@ -5,10 +5,12 @@ on:
     branches:
       - 'main'
 
-
-#Using Docker GitHub Action: "https://github.com/marketplace/actions/build-and-push-docker-images"
+env:
+  REGISTRY: tinchogaramo
+  IMAGE_NAME: challenge4
 
 jobs:
+#DockerHub Build/Push Using Docker Action: "https://github.com/marketplace/actions/build-and-push-docker-images"
   docker:
     runs-on: ubuntu-18.04
     steps:
@@ -29,4 +31,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: tinchogaramo/challenge4:latest
+          tags: ${{ env.REGISTRY }}/${{ ENV.IMAGE_NAME }}:latest
